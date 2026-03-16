@@ -1,26 +1,7 @@
-const menuItems = [
-    { id: 1, name: "Latte", category: "Drikkevarer", price: 45.0 },
-    { id: 2, name: "Croissant", category: "Bagværk", price: 28.0 },
-    { id: 3, name: "Espresso", category: "Drikkevarer", price: 32.0 },
-    { id: 4, name: "Te", category: "Drikkevarer", price: 30.0 }
-];
+let menuItems =
+    [];
 
-const orders = [
-    {
-        id: 1,
-        customerName: "Maja",
-        menuItemId: 1,
-        menuItemName: "Latte",
-        status: "NEW"
-    },
-    {
-        id: 2,
-        customerName: "Ali",
-        menuItemId: 2,
-        menuItemName: "Croissant",
-        status: "READY"
-    }
-];
+let orders = [];
 
 const statuses = ["NEW", "PREPARING", "READY"];
 // We use these later on

@@ -8,4 +8,13 @@ public record MenuItemResponse(
         String category,
         BigDecimal price
 ) {
+
+        public MenuItemResponse(Long id, String name, String category, BigDecimal price)
+        {
+                this.id = id;
+                this.name = name;
+                this.category = category;
+                this.price = price;
+        }
 }
+

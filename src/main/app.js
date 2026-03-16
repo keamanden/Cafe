@@ -67,4 +67,28 @@ renderOrders();
 
 }
 
-loadAllData();
+const orderForm = document.querySelector("#orderForm");
+
+orderForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const customerNameInput = document.querySelector("#customerNameInput");
+    const menuItemSelect = document.querySelector("#menuItemSelect");
+
+    const customerName = customerNameInput.value.trim();
+    const menuItemId = Number(menuItemSelect.value);
+
+    await fetch("http://localhost:8080/api/orders", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            customerName: customerName,
+            menuItemId: menuItemId
+        })
+    });
+
+    loadAllData();
+});
+

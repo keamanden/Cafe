@@ -1,5 +1,6 @@
 package dk.controller;
 
+import dk.kiil.cafestarter.dto.CreateOrderRequest;
 import dk.kiil.cafestarter.dto.MenuItemResponse;
 import dk.kiil.cafestarter.dto.OrderResponse;
 import dk.kiil.cafestarter.service.MenuItemService;
@@ -20,6 +21,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @RestController
 @CrossOrigin(origins = "http://localhost:5500")
@@ -73,6 +77,20 @@ public class Controller {
         }
 
         return response;
+    }
+
+    @PostMapping("/orders")
+    public OrderResponse createOrder(@RequestBody CreateOrderRequest request) {
+        
+        Order createdOrder = orderService.createOrder(request);
+        
+        return new OrderResponse(
+            createdOrder.getId(),
+            createdOrder.getCustomerName(),
+            createdOrder.getMenuItemId(),
+            createdOrder.getMenuItemName(),
+            createdOrder.getStatus()
+        );
     }
 
 }

@@ -43,5 +43,28 @@ function renderOrders() {
     }
 }
 
+async function loadMenuItems(){
+
+    const response = await fetch("http://localhost:8080/api/menu-items")
+    menuItems = await response.json();
+
+}
+
+async function loadOrders() {
+
+    const response = await fetch("http://localhost:8080/api/orders")
+    orders = await response.json();
+    
+}
+
+async function loadAllData(){
+
+await loadMenuItems();
+await loadOrders();
+
 renderMenuOptions();
 renderOrders();
+
+}
+
+loadAllData();
